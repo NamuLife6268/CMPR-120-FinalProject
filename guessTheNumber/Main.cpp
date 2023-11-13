@@ -1,5 +1,4 @@
 #include <iostream>
-#include <iomanip>
 using namespace std;
 
 int main()
@@ -47,12 +46,12 @@ int main()
 				break;
 			case 6:
 				cout << "Thank you for using C++ Primer software. Good bye!\n";
-				break;
+				return 0;
 			default:
 				cout << "Invalid choice. Please try again and enter a valid option this time.\n";
 			}
 		}
-	} while (choice != 6);
+	} while (true);
 
 	return 0;
 }
