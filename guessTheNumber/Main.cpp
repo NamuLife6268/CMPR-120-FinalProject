@@ -46,7 +46,7 @@ int main()
 				break;
 			case 6:
 				cout << "Thank you for using C++ Primer software. Good bye!\n";
-				return 0;
+				break;
 			default:
 				cout << "Invalid choice. Please try again and enter a valid option this time.\n";
 			}
