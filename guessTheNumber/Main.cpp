@@ -19,12 +19,11 @@ int main()
 		cout << "    5: Save My Statistics\n";
 		cout << "    6: To exit\n";
 		cout << "\nEnter your choice: ";
-		cin >> choice;
 
-		if (cin.fail())
+		if (!(cin >> choice))
 		{
 			cin.clear();
-			cin.ignore();
+			cin.ignore(numeric_limits<streamsize>::max(), '\n');
 			cout << "Invalid choice. Please try again and enter a valid option this time.\n";
 		}
 		else
