@@ -29,6 +29,9 @@ int main()
 		{
 			switch (choice)
 			{
+			default:
+				cout << "Invalid choice. Please try again and enter a valid option this time.\n";
+				break;
 			case 1:
 				cout << "You Entered 1: Display my available credit\n";
 				break;
@@ -47,8 +50,6 @@ int main()
 			case 6:
 				cout << "Thank you for using C++ Primer software. Good bye!\n";
 				return 0;
-			default:
-				cout << "Invalid choice. Please try again and enter a valid option this time.\n";
 			}
 		}
 	} while (true);
