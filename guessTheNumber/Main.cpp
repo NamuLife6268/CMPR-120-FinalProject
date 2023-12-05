@@ -2,7 +2,7 @@
 	C++ Primer Squad - Interactive Menu-based Application
 
 	File: main.cpp
-	Author: Ethan Hoang
+	Author: NamuLife6268
 	Date: December 14, 2023
 
 	Description:
