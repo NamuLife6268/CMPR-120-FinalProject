@@ -28,7 +28,7 @@ This C++ program is the culmination of the CMPR-120 course, serving as the final
 If you'd like to contribute to this project, you can [fork the repository](#) and [submit a pull request](#).
 
 ## Author
-- **Ethan Hoang** ([GitHub](https://github.com/NamuLife6268))
+- **NamuLife6268** ([GitHub](https://github.com/NamuLife6268))
 
 ## License
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
