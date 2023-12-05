@@ -1,3 +1,42 @@
+/*
+	C++ Primer Squad - Interactive Menu-based Application
+
+	File: main.cpp
+	Author: Ethan Hoang
+	Date: December 14, 2023
+
+	Description:
+	This program implements a simple interactive menu-based application in C++.
+	It provides features such as displaying available credit, adding credits to the account,
+	playing a guessing game, displaying user statistics, saving statistics to a file, and more.
+
+	Features:
+	- Display available credit
+	- Add credits to the account
+	- Play a guessing game
+	- Display user statistics
+	- Save statistics to a file
+
+	Dependencies:
+	- None
+
+	Compilation:
+	- This program can be compiled using a C++ compiler.
+	- No additional libraries are required.
+
+	Usage:
+	- Run the compiled executable.
+	- Follow the on-screen prompts to navigate through the menu and use different features.
+
+	Notes:
+	- The program uses standard C++ libraries for input/output, file operations, and random number generation.
+
+	Version History:
+	- v1.0 (Initial Release) - December 4, 2023
+		- Basic implementation of menu-based features.
+		- Credit display, credit addition, guessing game, and statistics.
+*/
+
 #include <iostream>    // Input/Output operations
 #include <fstream>     // File stream operations
 #include <iomanip>     // Formatting output with setw, setprecision, etc.
@@ -27,19 +66,24 @@ const double CREDIT_LOST = 1.0;
 void programIntro(string& playerName);
 // programIntro - Ask the user for their name
 // @param string& - playerName is the name of the user
+// @usage - Called at the beginning to greet the user
 
 void clearScreen();
 // clearScreen - Clears the console screen
+// @usage - Called for visual clarity during menu transitions
 
 void displayMenu();
 // displayMenu - Displays the main menu options and handles user input
+// @usage - Initiates the main program loop
 
 void displayMainMenu();
 // displayMainMenu - Displays the main menu header
+// @usage - Called by displayMenu() to show the menu structure
 
 int getUserChoice();
 // getUserChoice - Gets the user's choice from the menu, handles user invalid input
 // @return int - The user's valid choice
+// @usage - Called by displayMenu() to get and validate user input
 
 void handleMenuChoice(int choice, double& balance, double& amount, int& correctGuesses, int& missedGuesses, string& playerName, tm& localTime);
 // handleMenuChoice - Handles the user's menu choice
@@ -50,50 +94,60 @@ void handleMenuChoice(int choice, double& balance, double& amount, int& correctG
 // @param int& - missedGuesses is the count of missed guesses in the game
 // @param string& - playerName is the name of the user
 // @param tm& - localTime is a struct representing the current local time
+// @usage - Called by displayMenu() to execute the chosen menu option
 
 void displayBalance(double balance);
 // displayBalance - Displays the user's available balance
 // @param double - balance is the user's account balance
+// @usage - Called by handleMenuChoice() when the user chooses to display their balance
 
 void addCredits(double& balance, double& amount, const double MAX_ALLOWED);
 // addCredits - Adds credits to the user's account
 // @param double& - balance is the user's account balance
 // @param double& - amount is the amount to be added to the balance
 // @param const double - MAX_ALLOWED is the maximum allowed credit
+// @usage - Called by handleMenuChoice() when the user chooses to add credits
 
 int generateRandomNumber(int min, int max);
 // generateRandomNumber - Generates a random integer within a specified range
 // @param int min - The minimum value (inclusive) for the generated random number
 // @param int max - The maximum value (inclusive) for the generated random number
 // @return int - The randomly generated number within the specified range [min, max]
+// @usage - Called by playGame() to generate a random number for the game
 
 void playGame(double& balance, int& correctGuesses, int& missedGuesses);
 // playGame - Plays the guessing game
 // @param double& - balance is the user's account balance
 // @param int& - correctGuesses is the count of correct guesses in the game
 // @param int& - missedGuesses is the count of missed guesses in the game
+// @usage - Called by handleMenuChoice() when the user chooses to play the game
 
 void displayGameMenu(double balance);
 // displayGameMenu - Displays information for the guessing game
 // @param double - balance is the user's account balance
+// @usage - Called by playGame() to show game-related information
 
 int getUserGuess();
 // getUserGuess - Gets the user's guess for the game
 // @return int - The user's valid guess
+// @usage - Called by playGame() to get and validate the user's guess
 
 void handleCorrectGuess(double& balance, int& correctGuesses);
 // handleCorrectGuess - Handles correct guesses in the game
 // @param double& - balance is the user's account balance
 // @param int& - correctGuesses is the count of correct guesses in the game
+// @usage - Called by playGame() when the user makes a correct guess
 
 void handleIncorrectGuess(double& balance, int& missedGuesses);
 // handleIncorrectGuess - Handles incorrect guesses in the game
 // @param double& - balance is the user's account balance
 // @param int& - missedGuesses is the count of missed guesses in the game
+// @usage - Called by playGame() when the user makes an incorrect guess
 
 void playAgainPrompt(char& playAgain);
 // playAgainPrompt - Prompts the user if they want to play the game again
 // @param char& - playAgain is the user's response to playing again
+// @usage - Called by playGame() to ask if the user wants to play again
 
 void displayStatistics(tm& localTime, const string& playerName, double balance, int correctGuesses, int missedGuesses);
 // displayStatistics - Displays user statistics
@@ -102,6 +156,7 @@ void displayStatistics(tm& localTime, const string& playerName, double balance, 
 // @param double - balance is the user's account balance
 // @param int - correctGuesses is the count of correct guesses in the game
 // @param int - missedGuesses is the count of missed guesses in the game
+// @usage - Called by handleMenuChoice() when the user chooses to display statistics
 
 void saveStatistics(tm& localTime, const string& playerName, double balance, int correctGuesses, int missedGuesses);
 // saveStatistics - Saves user statistics
@@ -110,12 +165,15 @@ void saveStatistics(tm& localTime, const string& playerName, double balance, int
 // @param double - balance is the user's account balance
 // @param int - correctGuesses is the count of correct guesses in the game
 // @param int - missedGuesses is the count of missed guesses in the game
+// @usage - Called by handleMenuChoice() when the user chooses to save statistics
 
 void returnToMainMenu();
 // returnToMainMenu - Informs the user about returning to the main menu
+// @usage - Called by various functions (e.g., displayBalance, saveStatistics) to notify the user that they are returning to the main menu
 
 void exitProgram();
 // exitProgram - Exits the program with a farewell message
+// @usage - Called by handleMenuChoice when the user chooses to exit the program. Displays a thank-you message and terminates the program
 
 // Function for the program introduction, asking the user for their name
 void programIntro(string& playerName)
@@ -481,7 +539,7 @@ void saveStatistics(tm& localTime, const string& playerName, double balance, int
 
 	// Check if the file is successfully opened
 	if (!outputFile.is_open()) {
-		cout << "Error: Could not open file for writing." << endl;
+		cout << "Error: Could not open file '" << FILENAME << "' for writing." << endl;
 		returnToMainMenu();
 		return;
 	}
