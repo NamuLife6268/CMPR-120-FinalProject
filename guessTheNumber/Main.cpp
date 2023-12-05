@@ -539,7 +539,7 @@ void saveStatistics(tm& localTime, const string& playerName, double balance, int
 
 	// Check if the file is successfully opened
 	if (!outputFile.is_open()) {
-		cout << "Error: Could not open file '" << FILENAME << "' for writing." << endl;
+		cerr << "Error: Could not open file '" << FILENAME << "' for writing." << endl;
 		returnToMainMenu();
 		return;
 	}
