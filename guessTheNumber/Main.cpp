@@ -32,7 +32,7 @@
 	- The program uses standard C++ libraries for input/output, file operations, and random number generation.
 
 	Version History:
-	- v1.0 (Initial Release) - December 4, 2023
+	- v1.0 (Final Release) - December 4, 2023
 		- Basic implementation of menu-based features.
 		- Credit display, credit addition, guessing game, and statistics.
 */
