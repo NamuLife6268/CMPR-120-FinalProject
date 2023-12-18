@@ -1,7 +1,7 @@
 /*
 	C++ Primer Squad - Interactive Menu-based Application
 
-	File: main.cpp
+	File: Main.cpp
 	Author: NamuLife6268
 	Date: December 4, 2023
 
@@ -355,11 +355,18 @@ void addCredits(double& balance, double& amount, const double MAX_ALLOWED)
 		balance += amount;
 
 		// Display a message based on the added amount
-		if (amount == CREDIT_ADDED || amount < 0.0 || amount < CREDIT_ADDED) {
-			cout << "=> Credit added successfully. Your new balance is $" << fixed << setprecision(2) << balance << ".\n";
+		if (balance > MAX_ALLOWED) {
+			cout << "=> Error: Maximum allowable credit is $" << fixed << setprecision(2) << MAX_ALLOWED << ".\n";
+			cout << "=> Please enter a different amount and try again.\n" << endl;
+			balance -= amount;
 		}
 		else {
-			cout << "=> Credits added successfully. Your new balance is $" << fixed << setprecision(2) << balance << ".\n";
+			if (amount == CREDIT_ADDED || amount < 0.0 || amount < CREDIT_ADDED) {
+				cout << "=> Credit added successfully. Your new balance is $" << fixed << setprecision(2) << balance << ".\n";
+			}
+			else {
+				cout << "=> Credits added successfully. Your new balance is $" << fixed << setprecision(2) << balance << ".\n";
+			}
 		}
 
 		// Return to the main menu
@@ -589,3 +596,4 @@ int main() {
 	displayMenu();
 	return 0;
 }
+
