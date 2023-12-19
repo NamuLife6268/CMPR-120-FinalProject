@@ -1,3 +1,4 @@
+
 /*
 	C++ Primer Squad - Interactive Menu-based Application
 
@@ -596,4 +597,3 @@ int main() {
 	displayMenu();
 	return 0;
 }
-
